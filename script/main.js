@@ -11,7 +11,6 @@
   //   handleEvent,
   //   } from './dom.js'; 
   
-  let body = document.getElementsByTagName("body");
 
   let myLibrary = [
     // {
@@ -43,32 +42,55 @@
     myLibrary.push(newBook)
     document.querySelector('form').reset()
     console.log(myLibrary)
+
+    localStorage.setItem('BooksList',JSON.stringify(myLibrary)) 
   }
 
 
 
-
- // Get the app element
-var libraryList = document.createElement("div");
-
-libraryList.innerHTML = myLibrary.map(function (book) {
-	return `<div class="">
-  <img class="card-img-top" src="https://nypost.com/wp-content/uploads/sites/2/2019/03/old-library-book.jpg?quality=80&strip=all" alt="Card image cap">
-    <h5>${book.author}</h5>
-    <h5>${book.title}</h5>
-    <h5>${book.pages}</h5>
-    </div>`;
-}).join('') ;
+  // for (var i = 0; i < localStorage.length; i++){
+  //   document.body.append(localStorage.getItem(localStorage.key(i)));
+  // } 
 
 
-  
+  var libraryList = document.createElement("div");
 
 
+  for(let i = 0; i < localStorage.length; i++){
+    let key = localStorage.key(i)
+    let value = localStorage.getItem(key)
+    let rObject = JSON.parse(value)
+    
+    
+   libraryList.innerHTML =  rObject.map(book => {
+      return `<div class="d-flex flex-column col-6 justify-content-center">
+      <img class="card-img-top " src="https://nypost.com/wp-content/uploads/sites/2/2019/03/old-library-book.jpg?quality=80&strip=all" alt="Card image cap">
+      <div class="d-flex flex-column col-12 "> 
+       <h5> Author: ${book.author}</h5>
+        <h5>Title: ${book.title}</h5>
+        <h5>Pages: ${book.pages}</h5>
+        </div>
+        </div>`;
+    }) ;
+    
+    }
 
-  document.body.appendChild(libraryList);
+ // Get the book to display 
+
+// libraryList.innerHTML = myLibrary.map(function (book) {
+// 	return `<div class="">
+//   <img class="card-img-top" src="https://nypost.com/wp-content/uploads/sites/2/2019/03/old-library-book.jpg?quality=80&strip=all" alt="Card image cap">
+//   <h5>${book.author}</h5>
+//     <h5>${book.title}</h5>
+//     <h5>${book.pages}</h5>
+//     </div>`;
+// }).join('') ;
+
+
+   document.body.appendChild(libraryList);
 
 
  
-    document.getElementById("submit").addEventListener('click', addBookToLibrary)
+  document.getElementById("submit").addEventListener('click', addBookToLibrary)
 
   
