@@ -39,16 +39,15 @@
       document.getElementById('title').value,
       document.getElementById('pages').value
     )
-    myLibrary.push(newBook)
+    myLibrary.unshift(newBook)
     document.querySelector('form').reset()
-    console.log(myLibrary)
-
-    localStorage.setItem('BooksList',JSON.stringify(myLibrary)) 
+    let existingData = JSON.parse(localStorage.getItem('libraryBooks'));
+    existingData.unshift(newBook)
+    localStorage.setItem('libraryBooks', JSON.stringify(existingData))
+    location.reload()
   }
 
-
-  var libraryList = document.createElement("div");
-
+  let libraryList = document.createElement("div");
 
   for(let i = 0; i < localStorage.length; i++){
     let key = localStorage.key(i)
@@ -71,6 +70,7 @@
 
 
    document.body.appendChild(libraryList);
+
 
  
   document.getElementById("submit").addEventListener('click', addBookToLibrary)
