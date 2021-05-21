@@ -12,27 +12,23 @@
   //   } from './dom.js'; 
   
 
-  let myLibrary = [
-    // {
-    //   author: "Rashad",
-    //   title: "random",
-    //   pages: 23
-    // },
-
-    // {
-    //   author: "Railon",
-    //   title: "random",
-    //   pages: 45
-    // }
-  ]
+  let myLibrary = []
 
   function Book(author, title, pages){
     this.author = author
     this.title = title
     this.pages = pages
   }
-
+  
   function addBookToLibrary(event){
+
+    if(localStorage.getItem("BooksList")){
+       myLibrary = JSON.parse(localStorage.getItem("BooksList"))
+     }
+     else {
+        myLibrary = []
+     }
+
     event.preventDefault()
     let newBook = new Book(
       document.getElementById('author').value,
@@ -45,7 +41,6 @@
 
     localStorage.setItem('BooksList',JSON.stringify(myLibrary)) 
   }
-
 
   var libraryList = document.createElement("div");
 
@@ -68,7 +63,6 @@
     }) ;
     
     }
-
 
    document.body.appendChild(libraryList);
 
