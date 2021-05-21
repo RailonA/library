@@ -26,6 +26,8 @@
     // }
   ]
 
+  const ExistingData = JSON.parse(localStorage.getItem('libraryBooks'));
+
   function Book(author, title, pages){
     this.author = author
     this.title = title
@@ -39,11 +41,9 @@
       document.getElementById('title').value,
       document.getElementById('pages').value
     )
-    myLibrary.unshift(newBook)
     document.querySelector('form').reset()
-    let existingData = JSON.parse(localStorage.getItem('libraryBooks'));
-    existingData.unshift(newBook)
-    localStorage.setItem('libraryBooks', JSON.stringify(existingData))
+    ExistingData.unshift(newBook)
+    localStorage.setItem('libraryBooks', JSON.stringify(ExistingData))
     location.reload()
   }
 
@@ -75,4 +75,3 @@
  
   document.getElementById("submit").addEventListener('click', addBookToLibrary)
 
-  
