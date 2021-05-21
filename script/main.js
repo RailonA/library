@@ -42,7 +42,7 @@
     )
     myLibrary.unshift(newBook)
     document.querySelector('form').reset()
-    EXISTING_DATA.unshift(newBook)
+    EXISTING_DATA.push(newBook)
     localStorage.setItem('libraryBooks', JSON.stringify(EXISTING_DATA))
     location.reload()
   }
@@ -62,27 +62,30 @@
        <h5> Author: ${book.author}</h5>
         <h5>Title: ${book.title}</h5>
         <h5>Pages: ${book.pages}</h5>
-        <button type="button" class="btn btn-secondary" id="deleteBtn" data-bs-dismiss="modal">Delete</button>
         </div>
-        </div>`;
+        <button type="button" class="btn btn-secondary deleteBtn">Delete</button>
+        </div>`
     }) ;
     
     }
 
+    function remove(){
+      for(let i = 0; i < EXISTING_DATA.length; i++){
+        EXISTING_DATA.splice(EXISTING_DATA[i], 1)
+        localStorage.setItem('libraryBooks', JSON.stringify(EXISTING_DATA))
+        location.reload()
+      }
+      
+    }
 
-   document.body.appendChild(libraryList);
+
+  document.body.appendChild(libraryList);
   document.getElementById("submit").addEventListener('click', addBookToLibrary)
 
-
-  function remove(index){
-    EXISTING_DATA.splice(index, 1)
-    localStorage.setItem('libraryBooks', JSON.stringify(EXISTING_DATA))
-    location.reload()
-    this.index = index
-  }
-
-  document.getElementById("deleteBtn").addEventListener('click'
-
+  let btn = document.querySelectorAll(".deleteBtn")
+  for(let i = 0; i < btn.length; i++){
+    btn[i].addEventListener('click', remove)
+ }
 
 
 
