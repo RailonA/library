@@ -25,8 +25,7 @@
     //   pages: 45
     // }
   ]
-
-  const ExistingData = JSON.parse(localStorage.getItem('libraryBooks'));
+  const EXISTING_DATA = JSON.parse(localStorage.getItem('libraryBooks'));
 
   function Book(author, title, pages){
     this.author = author
@@ -41,9 +40,10 @@
       document.getElementById('title').value,
       document.getElementById('pages').value
     )
+    myLibrary.unshift(newBook)
     document.querySelector('form').reset()
-    ExistingData.unshift(newBook)
-    localStorage.setItem('libraryBooks', JSON.stringify(ExistingData))
+    EXISTING_DATA.unshift(newBook)
+    localStorage.setItem('libraryBooks', JSON.stringify(EXISTING_DATA))
     location.reload()
   }
 
@@ -62,6 +62,7 @@
        <h5> Author: ${book.author}</h5>
         <h5>Title: ${book.title}</h5>
         <h5>Pages: ${book.pages}</h5>
+        <button type="button" class="btn btn-secondary" id="deleteBtn" data-bs-dismiss="modal">Delete</button>
         </div>
         </div>`;
     }) ;
@@ -70,8 +71,19 @@
 
 
    document.body.appendChild(libraryList);
-
-
- 
   document.getElementById("submit").addEventListener('click', addBookToLibrary)
 
+
+  function remove(index){
+    EXISTING_DATA.splice(index, 1)
+    localStorage.setItem('libraryBooks', JSON.stringify(EXISTING_DATA))
+    location.reload()
+    this.index = index
+  }
+
+  document.getElementById("deleteBtn").addEventListener('click'
+
+
+
+
+  
