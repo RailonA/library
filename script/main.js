@@ -69,24 +69,21 @@
     
     }
 
-    function remove(){
-      for(let i = 0; i < EXISTING_DATA.length; i++){
-        EXISTING_DATA.splice(EXISTING_DATA[i], 1)
-        localStorage.setItem('libraryBooks', JSON.stringify(EXISTING_DATA))
-        location.reload()
-      }
-      
-    }
-
 
   document.body.appendChild(libraryList);
   document.getElementById("submit").addEventListener('click', addBookToLibrary)
 
   let btn = document.querySelectorAll(".deleteBtn")
-  for(let i = 0; i < btn.length; i++){
-    btn[i].addEventListener('click', remove)
- }
-
+  btn.forEach((element, index)=>{
+    element.addEventListener('click', ()=>{
+      for(let i = 0; i < EXISTING_DATA.length; i++){
+        console.log(i)
+        EXISTING_DATA.splice(index, 1)
+        localStorage.setItem('libraryBooks', JSON.stringify(EXISTING_DATA))
+        location.reload()
+      }
+    })
+  })
 
 
   
