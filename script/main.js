@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-  /* eslint-disable import/extensions */
   /* eslint-disable no-use-before-define */
 
 
