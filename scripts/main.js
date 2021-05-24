@@ -14,13 +14,15 @@ function Book(author, title, pages, readStatus) {
 }
 
 const addBookForm = document.getElementById("addBookForm");
-const showForm = document.getElementById('showForm')
+const showForm = document.getElementById('showForm');
+const libraryList = document.createElement('div');
+
 
 function displayForm() {
   addBookForm.classList.toggle("d-none")
 }
 
-formBtn.addEventListener("click", displayForm)
+// showForm.addEventListener("click", displayForm)
 
 function addBookToLibrary(event) {
   event.preventDefault();
@@ -36,9 +38,12 @@ function addBookToLibrary(event) {
   // myLibrary.push(newBook);
   // localStorage.setItem('libraryBooks', JSON.stringify(EXISTING_DATA));
   // window.location.reload();
+  console.log(myLibrary)
+  displayBooks()
 }
 
-const libraryList = document.createElement('div');
+
+function displayBooks(){
 
 for (let i = 0; i < myLibrary.length; i += 1) {
   // const key = localStorage.key(i);
@@ -61,11 +66,13 @@ for (let i = 0; i < myLibrary.length; i += 1) {
         <button type="button" class="btn btn-danger deleteBtn">Delete</button>
         </div>`);
 }
+}
+
 
 document.body.appendChild(libraryList);
 document.getElementById('submit').addEventListener('click', addBookToLibrary);
 
-
+displayBooks
 
 
 
