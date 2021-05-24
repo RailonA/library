@@ -22,23 +22,18 @@
     <h1 class="text-center">BOOKS LIBRARY</h1>
   </div>
   <div class="d-flex justify-content-center m-5">
-  <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <button type="button" class="btn btn-primary" id="showForm" onclick="displayForm()" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Add Book To Library
   </button>
+  <!-- <button id="formBtn" class="btn-primary" onclick="displayForm()">Add your book</button>  -->
 </div>
 </div>
 
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">ADD BOOK TO LIBRARY</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-         <form action="" class="d-flex flex-column col">
+ 
+
+        <form class="d-none flex-column col" id="addBookForm">
            <div class="mt-3">
              <label for="author" class="form-label">Author</label>
              <input type="text" id="author" class="form-control" placeholder="Enter Author">
@@ -56,18 +51,15 @@
             <label class="form-check-label" for="read">
                 I have read it
             </label>
-        </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button value=" Send" class="btn btn-success" type="submit" id="submit">Save Book</button> 
-        </div>
-      </div>
-    </div>
+          </div>
+          <div class="">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button value=" Send" class="btn btn-success" type="submit" id="submit">Save Book</button> 
+          </div>
+        </form>
 
-    </div>
-  </div>
+
+
   
 <script src="https://kit.fontawesome.com/0348c0adc9.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
