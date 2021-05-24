@@ -24,6 +24,7 @@ function addBookToLibrary(event) {
   document.querySelector('form').reset();
   EXISTING_DATA.push(newBook);
   localStorage.setItem('libraryBooks', JSON.stringify(EXISTING_DATA));
+  window.location.reload();
 }
 
 const libraryList = document.createElement('div');
@@ -60,6 +61,7 @@ btn.forEach((element, index) => {
       console.log(i);
       EXISTING_DATA.splice(index, 1);
       localStorage.setItem('libraryBooks', JSON.stringify(EXISTING_DATA));
+      window.location.reload();
     }
   });
 });
