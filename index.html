@@ -16,21 +16,25 @@
 
 
 <!-- Button trigger modal -->
+
+
 <div class="d-flex justify-content-center mt-5 flex-column">
   
-  <div class="d-flex justify-content-center">
-    <h1 class="text-center">BOOKS LIBRARY</h1>
+    <div class="d-flex justify-content-center">
+      <h1 class="text-center">BOOKS LIBRARY</h1>
+    </div>
+    <div class="d-flex justify-content-center m-5">
+    <button type="button" class="btn btn-primary" id="showForm" onclick="displayForm()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add Book To Library
+    </button>
+    <!-- <button id="formBtn" class="btn-primary" onclick="displayForm()">Add your book</button>  -->
   </div>
-  <div class="d-flex justify-content-center m-5">
-  <button type="button" class="btn btn-primary" id="showForm" onclick="displayForm()" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Add Book To Library
-  </button>
-  <!-- <button id="formBtn" class="btn-primary" onclick="displayForm()">Add your book</button>  -->
-</div>
 </div>
 
 
   <!-- Modal -->
+
+ 
  
 
         <form class="d-none flex-column col" id="addBookForm">
@@ -58,7 +62,7 @@
           </div>
         </form>
 
-
+<div class="d-flex justify-content-center mt-5 flex-column  col-5" id="booksDiv"></div>
 
   
 <script src="https://kit.fontawesome.com/0348c0adc9.js" crossorigin="anonymous"></script>
