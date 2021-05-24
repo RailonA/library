@@ -24,12 +24,11 @@ function addBookToLibrary(event) {
   document.querySelector('form').reset();
   EXISTING_DATA.push(newBook);
   localStorage.setItem('libraryBooks', JSON.stringify(EXISTING_DATA));
-  location.reload();
 }
 
 const libraryList = document.createElement('div');
 
-for (let i = 0; i < localStorage.length; i++) {
+for (let i = 0; i < localStorage.length; i += 1) {
   const key = localStorage.key(i);
   const value = localStorage.getItem(key);
   const rObject = JSON.parse(value);
@@ -57,11 +56,10 @@ document.getElementById('submit').addEventListener('click', addBookToLibrary);
 const btn = document.querySelectorAll('.deleteBtn');
 btn.forEach((element, index) => {
   element.addEventListener('click', () => {
-    for (let i = 0; i < EXISTING_DATA.length; i++) {
+    for (let i = 0; i < EXISTING_DATA.length; i += 1) {
       console.log(i);
       EXISTING_DATA.splice(index, 1);
       localStorage.setItem('libraryBooks', JSON.stringify(EXISTING_DATA));
-      location.reload();
     }
   });
 });
