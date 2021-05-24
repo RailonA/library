@@ -2,14 +2,6 @@
   /* eslint-disable import/extensions */
   /* eslint-disable no-use-before-define */
 
-  // import {
-  //   getDomElement,
-  //   setInnerHTML,
-  //   resetValue,
-  //   getAllElementsOfType,
-  //   handleEvent,
-  //   } from './dom.js'; 
-  
 
   let myLibrary = [ ]
   const EXISTING_DATA = JSON.parse(localStorage.getItem('libraryBooks')) || [];
