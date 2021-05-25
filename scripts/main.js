@@ -70,12 +70,21 @@ function displayBooks() {
     } else {
       readButton.classList.add('btn', 'btn-secondary');
     }
+
     readButton.setAttribute('data-attribute', i);
 
-    readButton.addEventListener('click', (event) => {
-      const index = event.target.getAttribute('data-attribute');
-      const bookIndex = myLibrary[index];
-      bookIndex.read = !bookIndex.read;
+    readButton.addEventListener('click', (e) => {
+      if (e.target.textContent === 'Read') {
+        e.target.textContent = 'Unread';
+        e.target.readStatus = false;
+        e.target.classList.remove('btn-primary');
+        e.target.classList.add('btn-secondary');
+      } else {
+        e.target.textContent = 'Read';
+        e.target.readStatus = true;
+        e.target.classList.remove('btn-secondary');
+        e.target.classList.add('btn-primary');
+      }
     });
 
     book.appendChild(image);
