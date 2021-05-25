@@ -4,7 +4,6 @@
 // const { formatters } = require("stylelint");
 
 const myLibrary = [];
-// const EXISTING_DATA = JSON.parse(localStorage.getItem('libraryBooks')) || [];
 
 function Book(author, title, pages, readStatus) {
   this.author = author;
@@ -16,7 +15,6 @@ function Book(author, title, pages, readStatus) {
 const addBookForm = document.getElementById('addBookForm');
 const showForm = document.getElementById('showForm');
 const libraryList = document.createElement('div');
-const btn = document.querySelectorAll('.deleteBtn');
 const booksDiv = document.getElementById('booksDiv');
 
 function displayForm() {
@@ -34,16 +32,15 @@ function addBookToLibrary(event) {
 
   myLibrary.unshift(newBook);
   document.querySelector('form').reset();
-  console.log(myLibrary);
   displayBooks();
 }
 
 function displayBooks() {
-  // Remove all children of bookList
+  // Display all children of bookList
   booksDiv.innerHTML = '';
   for (let i = 0; i < myLibrary.length; i += 1) {
     const book = document.createElement('div');
-    book.classList.add('card', 'card-body', 'mb-3');
+    book.classList.add('card', 'card-body', 'mb-3', 'col-4');
 
     const image = document.createElement('img');
     image.src = 'https://nypost.com/wp-content/uploads/sites/2/2019/03/old-library-book.jpg?quality=80&strip=all';
@@ -67,15 +64,18 @@ function displayBooks() {
     });
 
     const readButton = document.createElement('button');
-    readButton.classList.add('btn', 'btn-secondary');
-    readButton.textContent = myLibrary[i].readStatus ? 'Make Read' : 'Make Unread';
+    readButton.textContent = myLibrary[i].readStatus ? 'Read' : 'Unread';
+    if (myLibrary[i].readStatus === true) {
+      readButton.classList.add('btn', 'btn-primary');
+    } else {
+      readButton.classList.add('btn', 'btn-secondary');
+    }
     readButton.setAttribute('data-attribute', i);
 
     readButton.addEventListener('click', (event) => {
       const index = event.target.getAttribute('data-attribute');
-      const book = myLibrary[index];
-      book.read = !book.read;
-      displayLibrary();
+      const bookIndex = myLibrary[index];
+      bookIndex.read = !bookIndex.read;
     });
 
     book.appendChild(image);
@@ -95,5 +95,6 @@ function deleteBook(index) {
 
 document.body.appendChild(libraryList);
 document.getElementById('submit').addEventListener('click', addBookToLibrary);
+showForm.addEventListener('click', displayForm);
 
 displayBooks();
